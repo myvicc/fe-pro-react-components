@@ -93,7 +93,7 @@ const NavItem = ({ hrefNavList, internal }) => {
   return (
       navItemsList.map(() => {
         return (
-            <li key={crypto.randomUUID()} className="nav-list__item">
+            <li key={hrefNavList} className="nav-list__item">
               <a href={hrefNavList}>
                 {internal}
               </a>
@@ -123,7 +123,7 @@ function Main () {
 function Article ({headerListItem, textListItem }) {
   return mainItemsList.map(() => {
     return (
-        <li key={crypto.randomUUID()} className="list__item">
+        <li key={headerListItem} className="list__item">
           <h2>{headerListItem}</h2>
           <p>{textListItem}</p>
         </li>
