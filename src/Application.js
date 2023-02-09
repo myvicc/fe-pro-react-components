@@ -78,7 +78,7 @@ const Header = (children) => {
             {children}
           </a>
             {navItemsList.map(({ navItem, internal}) => {
-                    return <NavItem key={crypto.randomUUID()} hrefItem={navItem} internalItem={internal}/>;
+                    return <NavItem key={navItem} hrefItem={navItem} internalItem={internal}/>;
                     })}
         </div>
       </header>
