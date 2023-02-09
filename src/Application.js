@@ -2,19 +2,19 @@ import React from 'react';
 
 const navItemsList = [
   {
-    hrefNavList: "/",
+    navItem: "/",
     internal: "Home"
   },
   {
-    hrefNavList: "/#about",
+    navItem: "/#about",
     internal: "About us",
   },
   {
-    hrefNavList: "/#contact",
+    navItem: "/#contact",
     internal: "Contact us",
   },
   {
-    hrefNavList: "#/help",
+    navItem: "#/help",
     internal: "Help page"
   }
 ];
@@ -80,7 +80,7 @@ const Header = (logoHeader) => {
 
           <nav>
             <ul className="nav-list">
-              <NavItem />
+              <NavItem>test</NavItem>
             </ul>
           </nav>
         </div>
@@ -88,13 +88,13 @@ const Header = (logoHeader) => {
   )
 }
 
-const NavItem = ({ hrefNavList, internal }) => {
+const NavItem = ({ navItem, children }) => {
   return (
       navItemsList.map(() => {
         return (
-            <li key={hrefNavList} className="nav-list__item">
-              <a href={hrefNavList}>
-                {internal}
+            <li key={navItem} className="nav-list__item">
+              <a href={navItem}>
+                {children}
               </a>
             </li>
         )
