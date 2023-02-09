@@ -77,12 +77,9 @@ const Header = (children) => {
           <a href="" className="logo">
             {children}
           </a>
-            {
-                navItemsList.map(({ navItem, internal}) => {
-                    return (
-                        <NavItem key={crypto.randomUUID()} hrefItem={navItem} internalItem={internal}/>
-                    )})
-            }
+            {navItemsList.map(({ navItem, internal}) => {
+                    return <NavItem key={crypto.randomUUID()} hrefItem={navItem} internalItem={internal}/>;
+                    })}
         </div>
       </header>
   )
@@ -111,7 +108,9 @@ function Content () {
               Posts
             </h1>
             <ul className="list">
-              <Article />
+                {mainItemsList.map(({headerListItem, textListItem}) => {
+                        return <Article key={headerListItem} title={headerListItem} text={textListItem} />;
+                    })}
             </ul>
           </div>
         </section>
@@ -119,18 +118,14 @@ function Content () {
   )
 }
 
-function Article () {
+function Article ({title, text}) {
   return (
-      mainItemsList.map(({headerListItem, textListItem}) => {
-        return (
-            <li key={crypto.randomUUID()} className="list__item">
-              <h2>{headerListItem}</h2>
-              <p>
-                {textListItem}
-              </p>
-            </li>
-        )
-      })
+      <li className="list__item">
+          <h2>{title}</h2>
+          <p>
+              {text}
+          </p>
+      </li>
   )
 }
 
