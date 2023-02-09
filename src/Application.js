@@ -70,39 +70,39 @@ const mainItemsList = [
   },
 ]
 
-const Header = (logoHeader) => {
+const Header = (children) => {
   return (
       <header className="header">
         <div className="container">
           <a href="" className="logo">
-            {logoHeader}
+            {children}
           </a>
-
-          <nav>
-            <ul className="nav-list">
-              <NavItem>test</NavItem>
-            </ul>
-          </nav>
+            {
+                navItemsList.map(({ navItem, internal}) => {
+                    return (
+                        <NavItem key={crypto.randomUUID()} hrefItem={navItem} internalItem={internal}/>
+                    )})
+            }
         </div>
       </header>
   )
 }
 
-const NavItem = ({ navItem, children }) => {
+const NavItem = ({ hrefItem, internalItem}) => {
   return (
-      navItemsList.map(() => {
-        return (
-            <li key={navItem} className="nav-list__item">
-              <a href={navItem}>
-                {children}
-              </a>
+      <nav>
+        <ul className="nav-list">
+            <li className="nav-list__item">
+                <a href={hrefItem}>
+                    {internalItem}
+                </a>
             </li>
-        )
-      })
+        </ul>
+      </nav>
   )
 }
 
-function Main () {
+function Content () {
   return (
       <main>
         <section className="posts">
@@ -119,15 +119,19 @@ function Main () {
   )
 }
 
-function Article ({headerListItem, textListItem }) {
-  return mainItemsList.map(() => {
-    return (
-        <li key={headerListItem} className="list__item">
-          <h2>{headerListItem}</h2>
-          <p>{textListItem}</p>
-        </li>
-    )
-  })
+function Article () {
+  return (
+      mainItemsList.map(({headerListItem, textListItem}) => {
+        return (
+            <li key={crypto.randomUUID()} className="list__item">
+              <h2>{headerListItem}</h2>
+              <p>
+                {textListItem}
+              </p>
+            </li>
+        )
+      })
+  )
 }
 
 const Footer = ({logo, text}) => {
@@ -149,8 +153,8 @@ const Footer = ({logo, text}) => {
 const Application = () => {
   return (
       <div className="wrapper">
-        <Header logoHeader="My logo"/>
-        <Main />
+        <Header>My logo</Header>
+        <Content />
         <Footer logo="Logo" text="Small static blog @ 2022"/>
       </div>
   )
