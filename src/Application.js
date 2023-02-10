@@ -78,20 +78,20 @@ const Header = (children) => {
             {children}
           </a>
             {navItemsList.map(({ navItem, internal}) => {
-                    return <NavItem key={navItem} hrefItem={navItem} internalItem={internal}/>;
+                    return <NavItem key={navItem} hrefItem={navItem} children={internal}/>;
                     })}
         </div>
       </header>
   )
 }
 
-const NavItem = ({ hrefItem, internalItem}) => {
+const NavItem = ({ hrefItem, children}) => {
   return (
       <nav>
         <ul className="nav-list">
             <li className="nav-list__item">
                 <a href={hrefItem}>
-                    {internalItem}
+                    {children}
                 </a>
             </li>
         </ul>
@@ -109,7 +109,7 @@ function Content () {
             </h1>
             <ul className="list">
                 {mainItemsList.map(({headerListItem, textListItem}) => {
-                        return <Article key={headerListItem} title={headerListItem} text={textListItem} />;
+                        return <Article key={headerListItem} title={headerListItem} children={textListItem} />;
                     })}
             </ul>
           </div>
@@ -118,12 +118,12 @@ function Content () {
   )
 }
 
-function Article ({title, text}) {
+function Article ({title, children}) {
   return (
       <li className="list__item">
           <h2>{title}</h2>
           <p>
-              {text}
+              {children}
           </p>
       </li>
   )
